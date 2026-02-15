@@ -45,7 +45,7 @@ dashboard-automation/
 
 ## 🚦 Cómo Ejecutar
 
-### Prerequisitos
+### Prerrequisitos
 - Java 21 instalado
 - Gradle (o usar el wrapper incluido)
 
