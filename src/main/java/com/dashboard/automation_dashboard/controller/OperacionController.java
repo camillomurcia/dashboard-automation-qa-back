@@ -10,15 +10,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 @RequestMapping("/api/operacion")
-@CrossOrigin(origins = "*")
 public class OperacionController {
 
     @Autowired
     private OperacionService operacionService;
 
-    @GetMapping("/{id}")
+    @GetMapping("/buscarFuncionalidad/{id}")
     public List<Operacion> listarPorFuncionalidad(@PathVariable Long id) {
         return operacionService.listarPorFuncionalidad(id);
     }
@@ -31,12 +31,12 @@ public class OperacionController {
         return operacionService.guardarOperacion(nuevaOperacion, request.getFuncionalidadId());
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/actualizarOperacion/{id}")
     public Operacion actualizar(@PathVariable Long id, @RequestBody Operacion operacion) throws RecursoNoEncontradoException {
         return operacionService.actualizarOperacion(id, operacion);
     }
 
-    @PostMapping("/estadisticas/{id}")
+    @GetMapping("/estadisticas/{id}")
     public DashboardEstadisticasDto obtenerEstadisticas(@PathVariable Long id) {
         return operacionService.calcularEstadisticas(id);
     }

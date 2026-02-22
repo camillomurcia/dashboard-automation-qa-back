@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/funcionalidad")
-@CrossOrigin(origins = "*")
 public class FuncionalidadController {
 
     @Autowired
