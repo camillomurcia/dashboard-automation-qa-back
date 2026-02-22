@@ -15,34 +15,13 @@ public class Operacion {
     private String nombre;
     private int totalEscenarios;
     private int automatizados;
-    private String estado;
+    @ManyToOne
+    @JoinColumn(name = "estado_id")
+    private Estado estado;
     private double porcentaje;
 
     @ManyToOne
     @JoinColumn(name="funcionalidad_id")
     @JsonIgnore
     private Funcionalidad funcionalidad;
-
-    @PrePersist
-    @PreUpdate
-    public void calcularEstado(){
-        if (this.totalEscenarios > 0) {
-            double calculo = ((double) this.automatizados / this.totalEscenarios) * 100;
-            this.porcentaje = Math.round(calculo * 100.0) / 100.0;
-        } else {
-            this.porcentaje = 0;
-        }
-        if("No automatizable".equals(this.estado) || "Analisis a automatizar".equals(this.estado)){
-            return;
-        }
-
-        if (this.automatizados == 0){
-            this.estado = "Manual";
-        } else if (this.automatizados >= this.totalEscenarios) {
-            this.estado = "Completado";
-            this.automatizados = this.totalEscenarios;
-        } else {
-            this.estado = "Parcial";
-        }
-    }
 }
