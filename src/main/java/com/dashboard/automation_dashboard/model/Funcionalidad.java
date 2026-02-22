@@ -15,6 +15,8 @@ public class Funcionalidad {
 
     private String nombre;
 
+    private String descripcion;
+
     @OneToMany(mappedBy = "funcionalidad", cascade = CascadeType.ALL)
     private List<Operacion> operaciones;
 }

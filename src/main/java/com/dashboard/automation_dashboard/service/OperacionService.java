@@ -37,9 +37,7 @@ public class OperacionService {
         if (operacionActualizada.getNombre() != null) {
             existente.setNombre(operacionActualizada.getNombre());
         }
-        if (operacionActualizada.getAutomatizados() != 0) {
-            existente.setAutomatizados(operacionActualizada.getAutomatizados());
-        }
+        existente.setAutomatizados(operacionActualizada.getAutomatizados());
         if (operacionActualizada.getEstado() != null) {
             existente.setEstado(operacionActualizada.getEstado());
         }
